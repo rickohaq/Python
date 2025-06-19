@@ -1,0 +1,14 @@
+snmp-comunity {{SNMP.community | upper}}
+
+{# 
+| Filter    | Purpose                | Example       | Output                  |                   |
+| --------- | ---------------------- | ------------- | ----------------------- | ----------------- |
+| `upper`   | Uppercase a string     | \`{{ hostname | upper }}\`              | `R1`              |
+| `lower`   | Lowercase a string     | \`{{ hostname | lower }}\`              | `r1`              |
+| `replace` | Replace text           | \`{{ desc     | replace(" ", "\_") }}\` | `uplink_to_core`  |
+| `int`     | Convert to integer     | \`{{ "10"     | int }}\`                | `10`              |
+| `default` | Provide fallback value | \`{{ ip       | default('0.0.0.0') }}\` | `0.0.0.0`         |
+| `join`    | Join list into string  | \`{{ vlans    | join(',') }}\`          | `10,20,30`        |
+| `length`  | Get list length        | \`{{ vlans    | length }}\`             | `3`               |
+| `list`    | Convert string to list | \`{{ "abc"    | list }}\`               | `['a', 'b', 'c']` |
+#}

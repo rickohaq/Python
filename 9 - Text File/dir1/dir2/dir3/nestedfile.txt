@@ -1,0 +1,6 @@
+file ini dalam dir1/dir2/dir3
+this is new line to be added in nestedfile
+this is new line to be added in nestedfile
+this is new line to be added in nestedfile
+this is new line to be added in nestedfile
+this is new line to be added in nestedfile

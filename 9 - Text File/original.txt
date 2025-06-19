@@ -1,0 +1,3 @@
+this is just random textfile
+to demo read and writte in the same time
+i hope you will understand

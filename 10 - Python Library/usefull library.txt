@@ -1,0 +1,9 @@
+scrapli
+installnya ada 2 cara
+1. python3 -m pip install scrapli
+2. pip3 install scrapli
+
+NAPALM
+ip address
+
+textfsn

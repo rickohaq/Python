@@ -1,0 +1,286 @@
+! Command: show running-config
+! device: DCI (vEOS-lab, EOS-4.34.0F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+no aaa root
+!
+username cvptemp privilege 15 secret sha512 $6$fVKsSAJ6oFdE/.oD$83cLwl4PIdHSP0uMlKS44pIR/WT1ohE5/38bjwgk/4dKzWJzGGmaK.DUJDPq9pxh497fIXVmVv4T1S8p/upUq/
+username datacomm secret sha512 $6$Bhi9.M8H/LyTctZd$z1L3S28QHyq0TJXa917zq7FmW8WtEo2pwNE/1iOGhld8E5ZZc3lLOpvRLG9ePvH7jMycaZCFU3INhaGiXF0SQ0
+!
+management api http-commands
+   no shutdown
+!
+service configuration session max pending 10
+!
+daemon TerminAttr
+   exec /usr/bin/TerminAttr -cvaddr=192.168.26.204:9910 -taillogs -cvauth=token,/tmp/token -cvproxy= -smashexcludes=ale,flexCounter,hardware,kni,pulse,strata
+   no shutdown
+!
+switchport default mode routed
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+logging console informational
+logging policy match match-list ztpFilter discard
+!
+logging level AAA errors
+logging level ACCOUNTING errors
+logging level ACL errors
+logging level AGENT errors
+logging level ALE errors
+logging level ARP errors
+logging level BFD errors
+logging level BGP errors
+logging level BMP errors
+logging level CAPACITY errors
+logging level CAPI errors
+logging level CLASSIFICATION errors
+logging level CLEAR errors
+logging level CVX errors
+logging level DATAPLANE errors
+logging level DHCP errors
+logging level DMF errors
+logging level DOT1X errors
+logging level DOT1XHTTP errors
+logging level DSCP errors
+logging level ENVMON errors
+logging level ETH errors
+logging level EVENTMON errors
+logging level EXTENSION errors
+logging level FHRP errors
+logging level FLOW errors
+logging level FLOWTRACKING errors
+logging level FORWARDING errors
+logging level FRU errors
+logging level FWK errors
+logging level GMP errors
+logging level HARDWARE errors
+logging level HEALTH errors
+logging level HTTPSERVICE errors
+logging level IGMP errors
+logging level IGMPSNOOPING errors
+logging level INFLUXTELEMETRY errors
+logging level INT errors
+logging level INTF errors
+logging level IP6ROUTING errors
+logging level IPRIB errors
+logging level IRA errors
+logging level ISIS errors
+logging level KERNELFIB errors
+logging level LACP errors
+logging level LAG errors
+logging level LAUNCHER errors
+logging level LDP errors
+logging level LICENSE errors
+logging level LINEPROTO errors
+logging level LLDP errors
+logging level LOGMGR errors
+logging level LOOPBACK errors
+logging level LOOPPROTECT errors
+logging level MAPREDUCEMONITOR errors
+logging level MCS errors
+logging level MIRRORING errors
+logging level MKA errors
+logging level MLAG errors
+logging level MLDSNOOPING errors
+logging level MMODE errors
+logging level MONITORSECURITY errors
+logging level MROUTE errors
+logging level MRP errors
+logging level MSDP errors
+logging level MSRP errors
+logging level MSSPOLICYMONITOR errors
+logging level MVRP errors
+logging level NAT errors
+logging level OPENCONFIG errors
+logging level OPENFLOW errors
+logging level OSPF errors
+logging level OSPF3 errors
+logging level PACKAGE errors
+logging level PFC errors
+logging level PIMBSR errors
+logging level PORTSECURITY errors
+logging level POSTCARDTELEMETRY errors
+logging level PSEUDOWIRE errors
+logging level PTP errors
+logging level PWRMGMT errors
+logging level QOS errors
+logging level QUEUEMONITOR errors
+logging level RADIUS errors
+logging level REDUNDANCY errors
+logging level RIB errors
+logging level ROUTING errors
+logging level SECURITY errors
+logging level SERVERMONITOR errors
+logging level SERVERPROBE errors
+logging level SFE errors
+logging level SPANTREE errors
+logging level SSO errors
+logging level STAGEMGR errors
+logging level SYS errors
+logging level SYSDB errors
+logging level TAPAGG errors
+logging level TCP errors
+logging level TRAFFICPOLICY errors
+logging level TRANSCEIVER errors
+logging level TUNNEL errors
+logging level TUNNELINTF errors
+logging level VLAN errors
+logging level VMTRACERSESS errors
+logging level VMWAREVI errors
+logging level VMWAREVS errors
+logging level VRF errors
+logging level VRRP errors
+logging level VXLAN errors
+logging level ZTP informational
+!
+match-list input string ztpFilter
+   10 match regex ETH-4
+!
+hostname DCI
+ip name-server vrf default 8.8.8.8
+dns domain example.org
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+banner login
+No startup-config was found.
+
+The device is in Zero Touch Provisioning mode and is attempting to
+download the startup-config from a remote system. The device will not
+be fully functional until either a valid startup-config is downloaded
+from a remote system or Zero Touch Provisioning is cancelled.
+
+To cancel Zero Touch Provisioning, login as admin and type
+'zerotouch cancel' at the CLI. Alternatively, to disable Zero Touch
+Provisioning permanently, type 'zerotouch disable' at the CLI.
+Note: The device will reload when these commands are issued.
+
+EOF
+!
+interface Ethernet1
+   no switchport
+   ipv6 enable
+   ipv6 address auto-config
+   ipv6 nd ra rx accept default-route
+   ipv6 nd ra rx accept route-preference
+!
+interface Ethernet2
+   no switchport
+   ipv6 enable
+   ipv6 address auto-config
+   ipv6 nd ra rx accept default-route
+   ipv6 nd ra rx accept route-preference
+!
+interface Ethernet3
+   speed 400g-8
+   no switchport
+   ipv6 enable
+   ipv6 address auto-config
+   ipv6 nd ra rx accept default-route
+   ipv6 nd ra rx accept route-preference
+!
+interface Ethernet4
+   speed 400g-8
+   no switchport
+   ipv6 enable
+   ipv6 address auto-config
+   ipv6 nd ra rx accept default-route
+   ipv6 nd ra rx accept route-preference
+!
+interface Ethernet5
+   speed 100g-2
+   no switchport
+   ipv6 enable
+   ipv6 address auto-config
+   ipv6 nd ra rx accept default-route
+   ipv6 nd ra rx accept route-preference
+!
+interface Ethernet6
+   speed 100g-2
+   no switchport
+   ipv6 enable
+   ipv6 address auto-config
+   ipv6 nd ra rx accept default-route
+   ipv6 nd ra rx accept route-preference
+!
+interface Ethernet7
+   speed 100g-2
+   no switchport
+   ipv6 enable
+   ipv6 address auto-config
+   ipv6 nd ra rx accept default-route
+   ipv6 nd ra rx accept route-preference
+!
+interface Ethernet8
+   speed 100g-2
+   no switchport
+   ipv6 enable
+   ipv6 address auto-config
+   ipv6 nd ra rx accept default-route
+   ipv6 nd ra rx accept route-preference
+!
+interface Ethernet9
+   speed 100g-2
+   no switchport
+   ipv6 enable
+   ipv6 address auto-config
+   ipv6 nd ra rx accept default-route
+   ipv6 nd ra rx accept route-preference
+!
+interface Ethernet10
+   speed 100g-2
+   no switchport
+   ipv6 enable
+   ipv6 address auto-config
+   ipv6 nd ra rx accept default-route
+   ipv6 nd ra rx accept route-preference
+!
+interface Ethernet11
+   speed 100g-2
+   no switchport
+   ipv6 enable
+   ipv6 address auto-config
+   ipv6 nd ra rx accept default-route
+   ipv6 nd ra rx accept route-preference
+!
+interface Ethernet12
+   speed 100g-2
+   no switchport
+   ipv6 enable
+   ipv6 address auto-config
+   ipv6 nd ra rx accept default-route
+   ipv6 nd ra rx accept route-preference
+!
+interface Management1
+   mtu 1500
+   ip address 192.168.20.230/24
+   ipv6 enable
+   ipv6 address auto-config
+   ipv6 nd ra rx accept default-route
+   ipv6 nd ra rx accept route-preference
+!
+no ip routing
+!
+system control-plane
+   no service-policy input copp-system-policy
+!
+ip route 0.0.0.0/0 192.168.20.1
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+end

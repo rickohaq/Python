@@ -1,0 +1,7 @@
+this is just random text file that
+
+i will use to demonstrate read in python
+
+let mess just add some more line to this file
+
+because i wan to demonstrate readline

@@ -1,0 +1,34 @@
+router bgp {{ BGP.ASN }}
+{% for peer in BGP.peers %}
+{% if peer["neighbor"] == "10.0.0.2" %}
+  neighbor {{ peer.neighbor }} remote-as {{ peer["peer_asn"] }} 
+  neighbor {{ peer["neighbor"] }} loopback0
+{% else %}
+this peer is not matched to peer 10.0.0.2
+{% endif %}
+{% endfor %}
+
+{# 
+Gunakan dot notation (.) bila memungkinkan karena lebih ringkas dan mudah dibaca:
+neighbor {{ peer.neighbor }} remote-as {{ peer.peer_asn }}
+
+Gunakan bracket notation (["key"]) jika:
+
+Key-nya tidak bisa ditulis sebagai nama atribut Python.
+
+Key-nya disimpan dalam variabel.
+
+Contoh dengan variabel:
+{{ data.ip-address }}  ❌ ERROR — karena ada tanda "-"  
+{{ data["ip-address"] }} ✅ BENAR — bracket notation mengizinkan
+
+{% set my_key = "peer_asn" %}
+{{ peer[my_key] }} ✅ BENAR — bisa pakai variabel
+{{ peer.my_key }} ❌ SALAH — ini akan cari key literally "my_key" 
+
+| Situasi                                    | Pakai dot `.` | Pakai bracket `["key"]` |
+| ------------------------------------------ | ------------- | ----------------------- |
+| Key sederhana, misalnya `neighbor`, `asn`  | ✅ Ya          | ✅ Bisa juga             |
+| Key ada spasi, tanda baca, atau angka dulu | ❌ Tidak bisa  | ✅ Harus pakai           |
+| Key disimpan di variabel lain              | ❌ Tidak bisa  | ✅ Harus pakai           |
+#}

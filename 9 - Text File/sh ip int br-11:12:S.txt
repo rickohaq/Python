@@ -1,0 +1,16 @@
+                                                                                 Address
+Interface         IP Address              Status       Protocol           MTU    Owner
+----------------- ----------------------- ------------ -------------- ---------- -------
+Ethernet1         unassigned              up           up                1500
+Ethernet2         unassigned              up           up                1500
+Ethernet3         unassigned              up           up                1500
+Ethernet4         unassigned              up           up                1500
+Ethernet5         unassigned              down         down              1500
+Ethernet6         unassigned              down         down              1500
+Ethernet7         unassigned              down         down              1500
+Ethernet8         unassigned              down         down              1500
+Ethernet9         unassigned              down         down              1500
+Ethernet10        unassigned              down         down              1500
+Ethernet11        unassigned              down         down              1500
+Ethernet12        unassigned              down         down              1500
+Management1       192.168.20.230/24       up           up                1500

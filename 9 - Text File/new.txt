@@ -1,0 +1,4 @@
+This is just random textfile
+To demo read and writte in the same time
+I hope you will understandthis is new line to be put inthis is new line to be put inadd another onethis is new line to be put in
+add another one
